@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
-import MembershipTiersTable from "@/components/MembershipTiersTable";
 import { membershipTiers } from "@/lib/data/memberships";
 import { DemoForm, Field } from "@/components/forms";
 
@@ -23,13 +22,113 @@ export default function MembershipPage() {
       />
 
       <section className="mx-auto max-w-7xl px-4 py-16">
-        <MembershipTiersTable />
+        <div className="grid gap-8 lg:grid-cols-3">
+          {membershipTiers.map((t, i) => (
+            <Reveal key={t.id} delay={i * 100}>
+              <div
+                className={`card relative flex h-full flex-col p-8 ${
+                  t.featured ? "border-2 border-gold shadow-lg" : ""
+                }`}
+              >
+                {t.featured && (
+                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-gold px-4 py-1 text-xs font-bold uppercase tracking-wide text-navy">
+                    Most popular
+                  </span>
+                )}
+                <h2 className="font-display text-2xl font-bold">{t.name}</h2>
+                <p className="mt-1 text-sm text-slate-500">{t.audience}</p>
+                <p className="mt-5 font-display text-5xl font-bold text-navy">
+                  £{t.price}
+                  <span className="text-base font-normal text-slate-500"> /year</span>
+                </p>
+                <ul className="mt-6 flex-1 space-y-2.5 text-sm text-slate-600">
+                  {t.benefits.map((b) => (
+                    <li key={b} className="flex gap-2">
+                      <span aria-hidden="true" className="mt-0.5 text-gold-dark">✓</span>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href={`/checkout?type=membership&tier=${t.id}`}
+                  className={`${t.featured ? "btn-gold" : "btn-navy"} mt-8 w-full`}
+                >
+                  Join as {t.name}
+                </Link>
+              </div>
+            </Reveal>
+          ))}
+        </div>
         <Reveal>
           <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-slate-500">
             Membership renews annually as a subscription and can be cancelled at
             any time from your dashboard. The 30% conference discount is applied
             automatically at checkout for the lifetime of your membership.
           </p>
+        </Reveal>
+
+        {/* Comparison table */}
+        <Reveal>
+          <h2 className="flourish mt-20 text-center font-display text-3xl font-bold">
+            Compare Tiers at a Glance
+          </h2>
+          <div className="mt-10 overflow-x-auto">
+            <table className="w-full min-w-[640px] border-collapse text-sm">
+              <caption className="sr-only">Comparison of membership tier benefits</caption>
+              <thead>
+                <tr className="bg-navy text-white">
+                  <th scope="col" className="rounded-tl-lg p-4 text-left font-display">Benefit</th>
+                  <th scope="col" className="p-4 text-center font-display">Student<br /><span className="text-gold">£49/yr</span></th>
+                  <th scope="col" className="border-x-2 border-gold bg-navy-light p-4 text-center font-display">Academic<br /><span className="text-gold">£99/yr</span></th>
+                  <th scope="col" className="rounded-tr-lg p-4 text-center font-display">Industry<br /><span className="text-gold">£249/yr</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                {(
+                  [
+                    ["30% discount on all conference tickets", true, true, true],
+                    ["15% discount on online courses", true, true, true],
+                    ["Members-only quarterly briefings", true, true, true],
+                    ["Member community forum", true, true, true],
+                    ["Digital membership certificate", true, true, true],
+                    ["Printed membership certificate", false, true, true],
+                    ["Priority paper review scheduling", false, true, false],
+                    ["Cross-sector mentoring scheme", false, true, true],
+                    ["Eligibility for committee service", false, true, false],
+                    ["Two workshop delegate passes per year", false, false, true],
+                    ["Industry panel speaking opportunities", false, false, true],
+                    ["Company profile in GIRSD directory", false, false, true],
+                  ] as [string, boolean, boolean, boolean][]
+                ).map(([label, s, a, ind], i) => (
+                  <tr key={label} className={i % 2 ? "bg-cream" : "bg-white"}>
+                    <th scope="row" className="p-4 text-left font-medium text-slate-700">{label}</th>
+                    {[s, a, ind].map((v, col) => (
+                      <td
+                        key={col}
+                        className={`p-4 text-center ${col === 1 ? "border-x-2 border-gold/60" : ""}`}
+                      >
+                        {v ? (
+                          <span aria-label="Included" className="font-bold text-emerald-600">✓</span>
+                        ) : (
+                          <span aria-label="Not included" className="text-slate-300">—</span>
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+                <tr>
+                  <td className="p-4" />
+                  {membershipTiers.map((t) => (
+                    <td key={t.id} className={`p-4 text-center ${t.featured ? "border-x-2 border-b-2 border-gold/60" : ""}`}>
+                      <Link href={`/checkout?type=membership&tier=${t.id}`} className={`${t.featured ? "btn-gold" : "btn-navy"} text-sm`}>
+                        Join {t.name}
+                      </Link>
+                    </td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </Reveal>
       </section>
 

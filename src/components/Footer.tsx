@@ -19,6 +19,7 @@ const columns = [
       { href: "/courses", label: "Online Courses" },
       { href: "/awards", label: "Awards" },
       { href: "/membership", label: "Membership" },
+      { href: "/verify", label: "Verify a Certificate" },
     ],
   },
   {

@@ -2,8 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import Countdown from "@/components/Countdown";
 import CountUp from "@/components/CountUp";
-import PartnersGrid from "@/components/PartnersGrid";
 import EventsCarousel from "@/components/EventsCarousel";
+import PartnersGrid from "@/components/PartnersGrid";
+import Testimonials from "@/components/Testimonials";
 import Reveal from "@/components/Reveal";
 import { nextEvent, events } from "@/lib/data/events";
 import { courses } from "@/lib/data/courses";
@@ -178,9 +179,9 @@ export default function HomePage() {
             </div>
             <Link href="/events" className="btn-gold">View all events</Link>
           </Reveal>
-          <Reveal delay={200}>
+          <div className="mt-10">
             <EventsCarousel events={events} />
-          </Reveal>
+          </div>
         </div>
       </section>
 
@@ -213,7 +214,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* PARTNERS */}
+      {/* TESTIMONIALS */}
+      <Testimonials />
+
+      {/* PARTNERS & ACCREDITATION */}
       <PartnersGrid />
 
       {/* PRIMARY CTA */}

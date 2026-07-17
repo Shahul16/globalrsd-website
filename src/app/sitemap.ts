@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/membership",
     "/contact",
     "/partner",
+    "/verify",
     "/news",
     "/login",
     "/register",

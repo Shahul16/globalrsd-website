@@ -9,12 +9,9 @@
     "start": "next start"
   },
   "dependencies": {
-    "@headlessui/react": "^2.2.10",
-    "lucide-react": "^1.24.0",
     "next": "^15.1.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "swiper": "^14.0.5"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

@@ -1,42 +1,44 @@
-import Image from "next/image";
-import Reveal from "./Reveal";
+import Reveal from "@/components/Reveal";
+import { partners } from "@/lib/data/people";
 
-const partners = [
-  { name: "University of Manchester", logo: "https://images.unsplash.com/photo-1592280771190-3e2e4d571952?auto=format&fit=crop&w=200&q=80" },
-  { name: "KTH Royal Institute", logo: "https://images.unsplash.com/photo-1541339907198-e08756ebafe3?auto=format&fit=crop&w=200&q=80" },
-  { name: "King's College London", logo: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=200&q=80" },
-  { name: "Nanyang Institute", logo: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=200&q=80" },
-  { name: "Aston University", logo: "https://images.unsplash.com/photo-1592280771190-3e2e4d571952?auto=format&fit=crop&w=200&q=80" },
-  { name: "Gulf University S&T", logo: "https://images.unsplash.com/photo-1541339907198-e08756ebafe3?auto=format&fit=crop&w=200&q=80" },
-];
-
+/** Prominent, static display of academic partners and accreditation — trust section. */
 export default function PartnersGrid() {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-cream py-20" aria-labelledby="partners-heading">
       <div className="mx-auto max-w-7xl px-4">
         <Reveal className="text-center">
-          <h2 className="font-display text-3xl font-bold text-navy">Our Institutional Partners</h2>
-          <p className="mt-4 text-slate-600">Collaborating with world-class universities and research bodies.</p>
+          <h2 id="partners-heading" className="flourish font-display text-3xl font-bold sm:text-4xl">
+            Partners &amp; Accreditation
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-slate-600">
+            GIRSD works with leading universities, journals and industry bodies —
+            and is an approved CPD (Continuing Professional Development) provider.
+          </p>
         </Reveal>
-        
-        <div className="mt-12 grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6">
-          {partners.map((partner, i) => (
-            <Reveal key={partner.name} delay={i * 50}>
-              <div className="group flex flex-col items-center justify-center p-4 transition-all hover:-translate-y-1">
-                <div className="relative h-20 w-full overflow-hidden grayscale transition-all group-hover:grayscale-0">
-                  <img
-                    src={partner.logo}
-                    alt={partner.name}
-                    className="h-full w-full object-contain"
-                  />
-                </div>
-                <p className="mt-4 text-center text-xs font-semibold text-slate-400 group-hover:text-navy">
-                  {partner.name}
-                </p>
+        <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+          {partners.map((p, i) => (
+            <Reveal key={p} delay={(i % 4) * 70}>
+              <div className="card card-lift flex h-24 items-center justify-center px-4 text-center">
+                <span className="font-display text-base font-semibold leading-snug text-navy/70">
+                  {p}
+                </span>
               </div>
             </Reveal>
           ))}
         </div>
+        <Reveal>
+          <div className="mx-auto mt-10 flex max-w-xl items-center justify-center gap-4 rounded-lg border-2 border-gold/60 bg-white p-5">
+            <span aria-hidden="true" className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-navy font-display text-sm font-bold text-gold">
+              CPD
+            </span>
+            <p className="text-sm leading-relaxed text-slate-700">
+              <strong className="text-navy">CPD Group Approved Provider.</strong>{" "}
+              Our events and courses meet recognised standards of professional
+              education, and every certificate can be checked on our{" "}
+              <a href="/verify" className="font-semibold text-navy underline">verification page</a>.
+            </p>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
