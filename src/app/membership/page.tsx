@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
+import MembershipTiersTable from "@/components/MembershipTiersTable";
 import { membershipTiers } from "@/lib/data/memberships";
 import { DemoForm, Field } from "@/components/forms";
 
@@ -22,43 +23,7 @@ export default function MembershipPage() {
       />
 
       <section className="mx-auto max-w-7xl px-4 py-16">
-        <div className="grid gap-8 lg:grid-cols-3">
-          {membershipTiers.map((t, i) => (
-            <Reveal key={t.id} delay={i * 100}>
-              <div
-                className={`card relative flex h-full flex-col p-8 ${
-                  t.featured ? "border-2 border-gold shadow-lg" : ""
-                }`}
-              >
-                {t.featured && (
-                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-gold px-4 py-1 text-xs font-bold uppercase tracking-wide text-navy">
-                    Most popular
-                  </span>
-                )}
-                <h2 className="font-display text-2xl font-bold">{t.name}</h2>
-                <p className="mt-1 text-sm text-slate-500">{t.audience}</p>
-                <p className="mt-5 font-display text-5xl font-bold text-navy">
-                  £{t.price}
-                  <span className="text-base font-normal text-slate-500"> /year</span>
-                </p>
-                <ul className="mt-6 flex-1 space-y-2.5 text-sm text-slate-600">
-                  {t.benefits.map((b) => (
-                    <li key={b} className="flex gap-2">
-                      <span aria-hidden="true" className="mt-0.5 text-gold-dark">✓</span>
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href={`/checkout?type=membership&tier=${t.id}`}
-                  className={`${t.featured ? "btn-gold" : "btn-navy"} mt-8 w-full`}
-                >
-                  Join as {t.name}
-                </Link>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        <MembershipTiersTable />
         <Reveal>
           <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-slate-500">
             Membership renews annually as a subscription and can be cancelled at

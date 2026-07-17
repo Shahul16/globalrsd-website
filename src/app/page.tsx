@@ -2,7 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import Countdown from "@/components/Countdown";
 import CountUp from "@/components/CountUp";
-import PartnerMarquee from "@/components/PartnerMarquee";
+import PartnersGrid from "@/components/PartnersGrid";
+import EventsCarousel from "@/components/EventsCarousel";
 import Reveal from "@/components/Reveal";
 import { nextEvent, events } from "@/lib/data/events";
 import { courses } from "@/lib/data/courses";
@@ -177,26 +178,9 @@ export default function HomePage() {
             </div>
             <Link href="/events" className="btn-gold">View all events</Link>
           </Reveal>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {featuredEvents.map((e, i) => (
-              <Reveal key={e.slug} delay={i * 100}>
-                <Link href={`/events/${e.slug}`} className="group block h-full overflow-hidden rounded-lg border border-white/10 bg-white/5 transition hover:-translate-y-1.5 hover:border-gold/60 hover:bg-white/10 hover:shadow-2xl duration-300">
-                  <div className="img-zoom h-40">
-                    <img src={eventImage(e.category)} alt="" loading="lazy" />
-                  </div>
-                  <div className="p-6">
-                  <p className="text-xs font-semibold uppercase tracking-widest text-gold">{e.category}</p>
-                  <h3 className="mt-3 font-display text-xl font-bold text-white group-hover:text-gold-light">{e.acronym}</h3>
-                  <p className="mt-2 line-clamp-3 text-sm text-slate-300">{e.summary}</p>
-                  <p className="mt-4 text-sm font-medium text-slate-200">
-                    {new Date(e.date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })} · {e.city}
-                  </p>
-                  <p className="mt-1 text-sm text-gold">From £{Math.min(...e.tickets.map((t) => t.price))}</p>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delay={200}>
+            <EventsCarousel events={events} />
+          </Reveal>
         </div>
       </section>
 
@@ -230,7 +214,7 @@ export default function HomePage() {
       </section>
 
       {/* PARTNERS */}
-      <PartnerMarquee />
+      <PartnersGrid />
 
       {/* PRIMARY CTA */}
       <section className="bg-gradient-to-br from-navy to-navy-light py-20 text-center text-white">
