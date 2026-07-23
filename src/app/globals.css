@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0b1f3a;
+  --gold: #b88a2e;
+  --bg: #f7f7f4;
+  --ink: #1e1e1e;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  @apply font-body text-ink bg-cream antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply font-display text-navy;
+}
+
+/* Scroll-reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-marquee,
+  .animate-fadeUp,
+  .animate-shimmer,
+  .animate-float {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Gold divider flourish — small accent only */
+.flourish {
+  @apply relative inline-block;
+}
+.flourish::after {
+  content: "";
+  @apply block mx-auto mt-3 h-[3px] w-16 bg-gold rounded-full;
+}
+
+/* Buttons — Primary = Oxford Blue, gold reserved for hover accent.
+   Gold hover uses navy text to keep WCAG AA contrast. */
+.btn-gold,
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-md bg-navy px-5 py-2.5 font-semibold text-white transition-colors hover:bg-gold hover:text-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2;
+}
+.btn-navy {
+  @apply inline-flex items-center justify-center gap-2 rounded-md bg-navy px-5 py-2.5 font-semibold text-white transition-colors hover:bg-navy-light focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2;
+}
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-2 rounded-md border border-navy bg-white px-5 py-2.5 font-semibold text-navy transition-colors hover:bg-cream focus:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2;
+}
+
+.input {
+  @apply w-full rounded-md border border-line bg-white px-3.5 py-2.5 text-ink placeholder-muted focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy/25;
+}
+.label {
+  @apply mb-1.5 block text-sm font-semibold text-navy;
+}
+
+/* Cards — white, small radius, subtle border, very soft shadow */
+.card {
+  @apply rounded-md border border-line bg-white shadow-card transition-shadow hover:shadow-card-hover;
+}
+
+/* Restrained hover-lift */
+.card-lift {
+  @apply transition-all duration-300;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  @apply shadow-card-hover border-navy/20;
+}
+
+/* Card cover images zoom softly on hover */
+.img-zoom {
+  @apply overflow-hidden;
+}
+.img-zoom img {
+  @apply h-full w-full object-cover transition-transform duration-500;
+}
+.img-zoom:hover img {
+  transform: scale(1.05);
+}
+
+/* Pause the partner marquee on hover */
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Animated gold underline for nav links — thin accent */
+.nav-underline {
+  position: relative;
+}
+.nav-underline::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease-out;
+}
+.nav-underline:hover::after,
+.nav-underline[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+.prose-legal h2 {
+  @apply mt-8 mb-3 text-2xl;
+}
+.prose-legal h3 {
+  @apply mt-6 mb-2 text-xl;
+}
+.prose-legal p,
+.prose-legal li {
+  @apply mb-3 leading-relaxed;
+}
+.prose-legal ul {
+  @apply mb-4 list-disc pl-6;
+}

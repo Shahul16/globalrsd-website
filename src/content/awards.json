@@ -1,0 +1,58 @@
+[
+  {
+    "id": "award-1",
+    "type": "Individual",
+    "name": "Emerging Researcher of the Year",
+    "track": "Academia",
+    "description": "For a researcher within seven years of their doctorate showing exceptional promise and output."
+  },
+  {
+    "id": "award-2",
+    "type": "Individual",
+    "name": "Research Excellence Award",
+    "track": "Academia",
+    "description": "For a sustained body of internationally recognised research."
+  },
+  {
+    "id": "award-3",
+    "type": "Individual",
+    "name": "Outstanding Educator Award",
+    "track": "Academia",
+    "description": "For transformative teaching, mentorship or curriculum innovation."
+  },
+  {
+    "id": "award-4",
+    "type": "Individual",
+    "name": "Industry Innovation Leader",
+    "track": "Industry",
+    "description": "For an individual driving research-informed innovation within their organisation."
+  },
+  {
+    "id": "award-5",
+    "type": "Individual",
+    "name": "Skills Champion of the Year",
+    "track": "Industry",
+    "description": "For exceptional contribution to workforce skills development."
+  },
+  {
+    "id": "award-6",
+    "type": "Institutional",
+    "name": "Institutional Excellence in Research",
+    "track": "Academia",
+    "description": "For a department or institution demonstrating outstanding research culture and output."
+  },
+  {
+    "id": "award-7",
+    "type": "Institutional",
+    "name": "Excellence in Skills Development",
+    "track": "Industry",
+    "description": "For an organisation with exemplary training and development programmes."
+  },
+  {
+    "id": "award-8",
+    "type": "Institutional",
+    "name": "Research Impact Award",
+    "track": "Academia & Industry",
+    "description": "For a project with demonstrable social, economic or environmental benefit beyond academia. New for 2026."
+  }
+]
