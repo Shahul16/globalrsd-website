@@ -1,0 +1,233 @@
+[
+  {
+    "id": "award-1",
+    "type": "Individual",
+    "name": "Emerging Researcher of the Year",
+    "track": "Academia",
+    "description": "For a researcher within seven years of their doctorate showing exceptional promise and output."
+  },
+  {
+    "id": "award-2",
+    "type": "Individual",
+    "name": "Research Excellence Award",
+    "track": "Academia",
+    "description": "For a sustained body of internationally recognised research."
+  },
+  {
+    "id": "award-3",
+    "type": "Individual",
+    "name": "Outstanding Educator Award",
+    "track": "Academia",
+    "description": "For transformative teaching, mentorship or curriculum innovation."
+  },
+  {
+    "id": "award-4",
+    "type": "Individual",
+    "name": "Industry Innovation Leader",
+    "track": "Industry",
+    "description": "For an individual driving research-informed innovation within their organisation."
+  },
+  {
+    "id": "award-5",
+    "type": "Individual",
+    "name": "Skills Champion of the Year",
+    "track": "Industry",
+    "description": "For exceptional contribution to workforce skills development."
+  },
+  {
+    "id": "award-6",
+    "type": "Institutional",
+    "name": "Institutional Excellence in Research",
+    "track": "Academia",
+    "description": "For a department or institution demonstrating outstanding research culture and output."
+  },
+  {
+    "id": "award-7",
+    "type": "Institutional",
+    "name": "Excellence in Skills Development",
+    "track": "Industry",
+    "description": "For an organisation with exemplary training and development programmes."
+  },
+  {
+    "id": "award-8",
+    "type": "Institutional",
+    "name": "Research Impact Award",
+    "track": "Academia & Industry",
+    "description": "For a project with demonstrable social, economic or environmental benefit beyond academia. New for 2026."
+  },
+  {
+    "id": "award-9",
+    "type": "Individual",
+    "name": "Best Professor",
+    "track": "Academia",
+    "description": "For a professor demonstrating outstanding teaching, scholarship and contribution to their department."
+  },
+  {
+    "id": "award-10",
+    "type": "Individual",
+    "name": "Best Academic Chairman",
+    "track": "Academia",
+    "description": "For a department or programme chair showing exceptional academic leadership and vision."
+  },
+  {
+    "id": "award-11",
+    "type": "Individual",
+    "name": "Best Dean",
+    "track": "Academia",
+    "description": "For a dean whose leadership has elevated the academic standing and student experience of their faculty."
+  },
+  {
+    "id": "award-12",
+    "type": "Individual",
+    "name": "Best Computer Faculty",
+    "track": "Academia",
+    "description": "For a computer science or IT faculty member delivering outstanding teaching and research."
+  },
+  {
+    "id": "award-13",
+    "type": "Individual",
+    "name": "Best Academic Administrator",
+    "track": "Academia",
+    "description": "For an administrator whose management has strengthened academic operations and outcomes."
+  },
+  {
+    "id": "award-14",
+    "type": "Individual",
+    "name": "Best ASDF Student Project",
+    "track": "Academia",
+    "description": "For an outstanding student project completed under an ASDF-affiliated programme or chapter."
+  },
+  {
+    "id": "award-15",
+    "type": "Individual",
+    "name": "Best ASDF Student",
+    "track": "Academia",
+    "description": "For a student member of an ASDF chapter demonstrating outstanding academic and extracurricular achievement."
+  },
+  {
+    "id": "award-16",
+    "type": "Institutional",
+    "name": "Best ASDF Chapter",
+    "track": "Academia",
+    "description": "For an ASDF student chapter demonstrating outstanding activity, engagement and impact."
+  },
+  {
+    "id": "award-17",
+    "type": "Individual",
+    "name": "Best Chief Executive Officer",
+    "track": "Industry",
+    "description": "For a CEO demonstrating exceptional strategic leadership and organisational growth."
+  },
+  {
+    "id": "award-18",
+    "type": "Individual",
+    "name": "Best Chief Operating Officer",
+    "track": "Industry",
+    "description": "For a COO driving operational excellence and organisational performance."
+  },
+  {
+    "id": "award-19",
+    "type": "Individual",
+    "name": "Best Chief Finance Officer",
+    "track": "Industry",
+    "description": "For a CFO demonstrating outstanding financial stewardship and strategic insight."
+  },
+  {
+    "id": "award-20",
+    "type": "Individual",
+    "name": "Best Entrepreneur",
+    "track": "Industry",
+    "description": "For an entrepreneur building a business of exceptional impact, innovation or growth."
+  },
+  {
+    "id": "award-21",
+    "type": "Individual",
+    "name": "Best Woman Entrepreneur",
+    "track": "Industry",
+    "description": "For a woman entrepreneur demonstrating outstanding leadership and business achievement."
+  },
+  {
+    "id": "award-22",
+    "type": "Individual",
+    "name": "Best Young Entrepreneur",
+    "track": "Industry",
+    "description": "For an entrepreneur under 35 building a business of exceptional impact or innovation."
+  },
+  {
+    "id": "award-23",
+    "type": "Individual",
+    "name": "Best Human Resources Manager",
+    "track": "Industry",
+    "description": "For an HR leader demonstrating excellence in talent strategy and workplace culture."
+  },
+  {
+    "id": "award-24",
+    "type": "Individual",
+    "name": "Best Academic Researcher",
+    "track": "Academia",
+    "description": "For a researcher within an academic institution producing outstanding, high-impact work."
+  },
+  {
+    "id": "award-25",
+    "type": "Individual",
+    "name": "Best Industry Researcher",
+    "track": "Industry",
+    "description": "For a researcher within industry producing outstanding, high-impact applied work."
+  },
+  {
+    "id": "award-26",
+    "type": "Individual",
+    "name": "Best Scientific Researcher",
+    "track": "Academia & Industry",
+    "description": "For a researcher whose scientific work has made a significant contribution across academia or industry."
+  },
+  {
+    "id": "award-27",
+    "type": "Individual",
+    "name": "Lifetime Achievements Awards",
+    "track": "Academia & Industry",
+    "description": "For sustained, career-long contribution and impact across research, education or industry."
+  },
+  {
+    "id": "award-28",
+    "type": "Institutional",
+    "name": "Best Infrastructure Institute",
+    "track": "Academia",
+    "description": "For an institution demonstrating outstanding campus infrastructure and learning facilities."
+  },
+  {
+    "id": "award-29",
+    "type": "Institutional",
+    "name": "Best Academic Institute",
+    "track": "Academia",
+    "description": "For an institution demonstrating outstanding academic standards and student outcomes."
+  },
+  {
+    "id": "award-30",
+    "type": "Institutional",
+    "name": "Best Resourceful Institute",
+    "track": "Academia",
+    "description": "For an institution making exceptional use of resources to support teaching, research and students."
+  },
+  {
+    "id": "award-31",
+    "type": "Institutional",
+    "name": "Best Automated Institute",
+    "track": "Academia",
+    "description": "For an institution demonstrating outstanding adoption of automation and digital systems."
+  },
+  {
+    "id": "award-32",
+    "type": "Institutional",
+    "name": "Best Communication Institute",
+    "track": "Academia",
+    "description": "For an institution demonstrating outstanding internal and external communication practices."
+  },
+  {
+    "id": "award-33",
+    "type": "Institutional",
+    "name": "Best Structured Institute",
+    "track": "Academia",
+    "description": "For an institution demonstrating an exceptionally well-structured academic and administrative framework."
+  }
+]
