@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <g>
+    <ellipse cx="300" cy="150" rx="31.0" ry="65.0" fill="#F2A73B" transform="rotate(0.0 300 300)"/><ellipse cx="300" cy="150" rx="31.0" ry="65.0" fill="#EE8F2A" transform="rotate(22.5 300 300)"/><ellipse cx="300" cy="150" rx="31.0" ry="65.0" fill="#F2A73B" transform="rotate(45.0 300 300)"/><ellipse cx="300" cy="150" rx="31.0" ry="65.0" fill="#EE8F2A" transform="rotate(67.5 300 300)"/><ellipse cx="300" cy="150" rx="31.0" ry="65.0" fill="#F2A73B" transform="rotate(90.0 300 300)"/><ellipse cx="300" cy="150" rx="31.0" ry="65.0" fill="#EE8F2A" transform="rotate(112.5 300 300)"/><ellipse cx="300" cy="150" rx="31.0" ry="65.0" fill="#F2A73B" transform="rotate(135.0 300 300)"/><ellipse cx="300" cy="150" rx="31.0" ry="65.0" fill="#EE8F2A" transform="rotate(157.5 300 300)"/><ellipse cx="300" cy="150" rx="31.0" ry="65.0" fill="#F2A73B" transform="rotate(180.0 300 300)"/><ellipse cx="300" cy="150" rx="31.0" ry="65.0" fill="#EE8F2A" transform="rotate(202.5 300 300)"/><ellipse cx="300" cy="150" rx="31.0" ry="65.0" fill="#F2A73B" transform="rotate(225.0 300 300)"/><ellipse cx="300" cy="150" rx="31.0" ry="65.0" fill="#EE8F2A" transform="rotate(247.5 300 300)"/><ellipse cx="300" cy="150" rx="31.0" ry="65.0" fill="#F2A73B" transform="rotate(270.0 300 300)"/><ellipse cx="300" cy="150" rx="31.0" ry="65.0" fill="#EE8F2A" transform="rotate(292.5 300 300)"/><ellipse cx="300" cy="150" rx="31.0" ry="65.0" fill="#F2A73B" transform="rotate(315.0 300 300)"/><ellipse cx="300" cy="150" rx="31.0" ry="65.0" fill="#EE8F2A" transform="rotate(337.5 300 300)"/>
+  </g>
+  <circle cx="300" cy="300" r="148" fill="#ffffff" stroke="#EE8F2A" stroke-width="4"/>
+  <text x="300" y="242" text-anchor="middle" font-family="Liberation Sans, Arial, sans-serif" font-weight="700" font-size="34" fill="#E8871E" letter-spacing="6">THE</text>
+  <text x="300" y="328" text-anchor="middle" font-family="Liberation Sans, Arial, sans-serif" font-weight="800" font-size="98" fill="#E8871E">CPD</text>
+  <text x="300" y="382" text-anchor="middle" font-family="Liberation Sans, Arial, sans-serif" font-weight="700" font-size="30" fill="#E8871E" letter-spacing="5">GROUP</text>
+  <line x1="230" y1="400" x2="370" y2="400" stroke="#E8871E" stroke-width="3"/>
+  <text x="465" y="105" text-anchor="middle" font-family="Liberation Sans, Arial, sans-serif" font-weight="600" font-size="26" fill="#E8871E">R</text>
+  <circle cx="465" cy="95" r="18" fill="none" stroke="#E8871E" stroke-width="2.5"/>
+</svg>
