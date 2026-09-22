@@ -5,7 +5,7 @@ import Script from "next/script";
  * Only loads if NEXT_PUBLIC_TURNSTILE_SITE_KEY is configured.
  */
 export default function TurnstileLoader() {
-  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "0x4AAAAAAFAAlriI1ioGxDjY";
   if (!siteKey) return null;
 
   return (

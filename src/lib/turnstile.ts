@@ -9,15 +9,16 @@ export async function verifyTurnstile(
   remoteip: string | null = null,
   expectedAction?: string
 ): Promise<{ ok: boolean; reason?: string }> {
-  const secret = process.env.TURNSTILE_SECRET_KEY;
+  // Support both standard Cloudflare env variable names
+  const secret = process.env.TURNSTILE_SECRET || process.env.TURNSTILE_SECRET_KEY;
 
   // If secret key is not configured in environment variables, skip validation (fail open in development)
   if (!secret) {
     return { ok: true };
   }
 
-  if (!token) {
-    return { ok: false, reason: "Missing Turnstile verification token" };
+  if (typeof token !== "string" || token.length === 0 || token.length > 2048) {
+    return { ok: false, reason: "Invalid Turnstile verification token" };
   }
 
   try {
@@ -31,6 +32,7 @@ export async function verifyTurnstile(
     const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      signal: AbortSignal.timeout(10_000),
       body: formData.toString(),
     });
 
@@ -53,6 +55,18 @@ export async function verifyTurnstile(
       return { ok: false, reason: `Action mismatch: expected ${expectedAction}, got ${outcome.action}` };
     }
 
+    // Optional hostname allowlist check (if TURNSTILE_HOSTNAMES is configured)
+    if (process.env.TURNSTILE_HOSTNAMES && outcome.hostname) {
+      const allowed = new Set(
+        process.env.TURNSTILE_HOSTNAMES.split(",")
+          .map((h) => h.trim())
+          .filter(Boolean)
+      );
+      if (allowed.size > 0 && !allowed.has(outcome.hostname)) {
+        return { ok: false, reason: `Hostname mismatch: ${outcome.hostname} not in allowed hostnames` };
+      }
+    }
+
     return { ok: true };
   } catch (err: any) {
     console.error("Turnstile verification network error:", err);
@@ -60,3 +74,4 @@ export async function verifyTurnstile(
     return { ok: true };
   }
 }
+

@@ -48,7 +48,7 @@ interface TurnstileProps {
  * Automatically injects hidden "cf-turnstile-response" input.
  */
 export default function Turnstile({
-  siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
+  siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "0x4AAAAAAFAAlriI1ioGxDjY",
   action,
   theme = "auto",
   size = "normal",
