@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { SITE } from "@/lib/site";
+import { verifyTurnstile } from "@/lib/turnstile";
 
 export const runtime = "nodejs";
 
@@ -46,18 +47,7 @@ async function verifyRecaptcha(token: string, remoteip: string | null, expectedA
 /**
  * Receives every enquiry form (Contact, Membership, Committee, Partner,
  * Awards, Careers, Internship) as multipart/form-data, verifies it isn't a bot via
- * reCAPTCHA, and emails it to the admin via Resend.
- *
- * Env (Railway → Variables):
- *   RESEND_API_KEY        – required
- *   LEAD_TO_EMAIL         – optional, defaults to SITE.email (info@globalrsd.co.uk); award nominations use SITE.awardsEmail
- *   LEAD_FROM_EMAIL       – optional, defaults to Resend's onboarding sender.
- *                           After verifying globalrsd.co.uk in Resend, set e.g.
- *                           "GIRSD Website <leads@globalrsd.co.uk>"
- *   RECAPTCHA_SECRET_KEY  – optional but recommended; if unset, reCAPTCHA
- *                           checking is skipped (forms still work, just
- *                           unprotected). Paired with the public
- *                           NEXT_PUBLIC_RECAPTCHA_SITE_KEY read client-side.
+ * Cloudflare Turnstile or reCAPTCHA, and emails it to the admin via Resend.
  */
 export async function POST(req: NextRequest) {
   const apiKey = process.env.RESEND_API_KEY;
@@ -81,24 +71,51 @@ export async function POST(req: NextRequest) {
   }
 
   const formName = String(form.get("_form") ?? "Website enquiry").slice(0, 80);
-
-  const recaptchaToken = String(form.get("recaptchaToken") ?? "");
   const remoteip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? null;
-  const recaptcha = await verifyRecaptcha(recaptchaToken, remoteip, String(form.get("recaptchaAction") ?? ""));
-  if (!recaptcha.ok) {
-    console.warn(`reCAPTCHA blocked a "${formName}" submission:`, recaptcha.reason);
-    return NextResponse.json(
-      { error: "We couldn't verify you're not a bot. Please refresh the page and try again." },
-      { status: 400 }
-    );
+
+  // 1. Cloudflare Turnstile Verification
+  if (process.env.TURNSTILE_SECRET_KEY) {
+    const turnstileToken = String(form.get("cf-turnstile-response") || form.get("turnstileToken") || "");
+    const turnstileResult = await verifyTurnstile(turnstileToken, remoteip, String(form.get("turnstileAction") || ""));
+    if (!turnstileResult.ok) {
+      console.warn(`Turnstile blocked a "${formName}" submission:`, turnstileResult.reason);
+      return NextResponse.json(
+        { error: "Bot verification failed. Please complete the security challenge and try again." },
+        { status: 400 }
+      );
+    }
   }
+
+  // 2. Google reCAPTCHA Verification (if configured)
+  if (process.env.RECAPTCHA_SECRET_KEY) {
+    const recaptchaToken = String(form.get("recaptchaToken") ?? "");
+    const recaptcha = await verifyRecaptcha(recaptchaToken, remoteip, String(form.get("recaptchaAction") ?? ""));
+    if (!recaptcha.ok) {
+      console.warn(`reCAPTCHA blocked a "${formName}" submission:`, recaptcha.reason);
+      return NextResponse.json(
+        { error: "We couldn't verify you're not a bot. Please refresh the page and try again." },
+        { status: 400 }
+      );
+    }
+  }
+
   const fields: [string, string][] = [];
   const attachments: { filename: string; content: Buffer }[] = [];
   let visitorEmail = "";
   let visitorName = "";
 
   for (const [key, value] of form.entries()) {
-    if (key === "_form" || key === "website" || key === "recaptchaToken" || key === "recaptchaAction") continue;
+    if (
+      key === "_form" ||
+      key === "website" ||
+      key === "recaptchaToken" ||
+      key === "recaptchaAction" ||
+      key === "cf-turnstile-response" ||
+      key === "turnstileToken" ||
+      key === "turnstileAction"
+    ) {
+      continue;
+    }
     if (value instanceof File) {
       if (value.size === 0) continue;
       if (value.size > MAX_ATTACHMENT) {

@@ -7,6 +7,8 @@ import { useAuth } from "@/lib/auth";
 import SocialAuth from "@/components/SocialAuth";
 import PasswordInput from "@/components/PasswordInput";
 
+import Turnstile from "@/components/Turnstile";
+
 function LoginForm() {
   const { login } = useAuth();
   const router = useRouter();
@@ -76,6 +78,7 @@ function LoginForm() {
             onChange={setPassword}
           />
         </div>
+        <Turnstile action="login" />
         <button type="submit" disabled={busy} className="btn-gold w-full disabled:opacity-60">{busy ? "Signing in…" : "Log in"}</button>
         <p className="text-center text-sm text-slate-500">
           No account yet?{" "}

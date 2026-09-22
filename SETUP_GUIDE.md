@@ -21,8 +21,10 @@ to make it live. Total hands-on time: roughly 60–90 minutes (plus DNS wait).
 | 10 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase → Project Settings → API (service_role — keep secret) | ✅ |
 | 11 | `STRIPE_SECRET_KEY` | Stripe → Developers → API keys (`sk_test_…` now, `sk_live_…` later) | ✅ for payments |
 | 12 | `STRIPE_WEBHOOK_SECRET` | Stripe → Webhooks → your endpoint (`whsec_…`) | ✅ for orders to record |
-| 13 | `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` | Your registered reCAPTCHA key for www.globalrsd.co.uk: `6LcO_GstAAAAAAIinjg8tu23OoBRqu5ljAof7UVq` | optional but recommended (bot protection on forms) |
-| 14 | `RECAPTCHA_SECRET_KEY` | Paired secret key: `6LcO_GstAAAAAK3bLkRGCfZXv9O-yTKvDR3YMj6z` — keep this one private, never commit it | optional but recommended |
+| 13 | `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` | Your registered reCAPTCHA key for www.globalrsd.co.uk: `6LcO_GstAAAAAAIinjg8tu23OoBRqu5ljAof7UVq` | optional (Google bot protection) |
+| 14 | `RECAPTCHA_SECRET_KEY` | Paired secret key: `6LcO_GstAAAAAK3bLkRGCfZXv9O-yTKvDR3YMj6z` — keep this one private, never commit it | optional |
+| 15 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Cloudflare Dashboard → Turnstile → Add widget (or test key `1x00000000000000000000AA`) | optional (Cloudflare bot protection) |
+| 16 | `TURNSTILE_SECRET_KEY` | Cloudflare Dashboard → Turnstile → Widget Secret key (or test key `1x0000000000000000000000000000000AA`) | optional |
 
 > After adding/changing variables, Railway redeploys automatically.
 > `NEXT_PUBLIC_*` variables are baked in at build time — a redeploy is required.

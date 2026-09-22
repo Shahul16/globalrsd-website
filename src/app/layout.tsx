@@ -7,6 +7,7 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import ScrollProgress from "@/components/ScrollProgress";
 import CookieConsent from "@/components/CookieConsent";
 import RecaptchaLoader from "@/components/RecaptchaLoader";
+import TurnstileLoader from "@/components/TurnstileLoader";
 import { AuthProvider } from "@/lib/auth";
 import { SITE } from "@/lib/site";
 
@@ -61,6 +62,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://challenges.cloudflare.com" />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap"
           rel="stylesheet"
@@ -106,6 +108,7 @@ export default function RootLayout({
           }}
         />
         <RecaptchaLoader />
+        <TurnstileLoader />
         <AuthProvider>
           <LoadingScreen />
           <ScrollProgress />

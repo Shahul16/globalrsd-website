@@ -6,6 +6,7 @@ import { useState, type FormEvent } from "react";
 import { useAuth } from "@/lib/auth";
 import SocialAuth from "@/components/SocialAuth";
 import PasswordInput from "@/components/PasswordInput";
+import Turnstile from "@/components/Turnstile";
 
 export default function RegisterPage() {
   const { register } = useAuth();
@@ -72,6 +73,7 @@ export default function RegisterPage() {
             <label htmlFor="password" className="label">Choose a password</label>
             <PasswordInput id="password" autoComplete="new-password" value={password} onChange={setPassword} />
           </div>
+          <Turnstile action="register" />
           <button type="submit" disabled={busy} className="btn-gold w-full disabled:opacity-60">{busy ? "Creating account…" : "Create account"}</button>
           <p className="text-center text-sm text-slate-500">
             Already registered?{" "}
