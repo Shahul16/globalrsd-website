@@ -29,7 +29,7 @@ export type RegistrationDeadlines = {
 
 export type Event = {
   slug: string;
-  category: "Research Conferences" | "Skills Development Workshops";
+  category: string;
   title: string;
   acronym: string;
   date: string; // ISO
@@ -49,9 +49,7 @@ export type Event = {
 import eventsJson from "@/content/events.json";
 import { SITE } from "@/lib/site";
 
-export const events = (eventsJson as Array<{ category: string }>).filter(
-  (event) => event.category === "Research Conferences" || event.category === "Skills Development Workshops",
-) as Event[];
+export const events = eventsJson as Event[];
 
 export function getEvent(slug: string) {
   return events.find((e) => e.slug === slug);

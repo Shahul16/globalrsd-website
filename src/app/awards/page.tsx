@@ -30,6 +30,9 @@ export default function AwardsPage() {
               src="/awards.png"
               alt="Awards ceremony trophies"
               loading="lazy"
+              width={1200}
+              height={400}
+              className="w-full h-full object-cover"
             />
           </div>
         </Reveal>

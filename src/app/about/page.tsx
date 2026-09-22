@@ -35,7 +35,7 @@ export default function AboutPage() {
         <Reveal>
           <h2 className="flourish font-display text-3xl font-bold">Who We Are</h2>
           <div className="img-zoom mt-8 h-64 rounded-xl shadow-md">
-            <img src={IMAGES.aboutCampus} alt="Graduates celebrating at an academic ceremony" loading="lazy" />
+            <img src={IMAGES.aboutCampus} alt="Graduates celebrating at an academic ceremony" loading="lazy" width={800} height={400} className="w-full h-full object-cover" />
           </div>
           <p className="mt-6 leading-relaxed">
             At the Global Institute of Research and Skills Development, we
@@ -123,6 +123,8 @@ export default function AboutPage() {
                   alt={about.founder.name || "Founder"} 
                   className="w-48 h-48 md:w-full md:h-64 rounded-xl object-cover shadow-sm" 
                   loading="lazy"
+                  width={300}
+                  height={300}
                 />
               </div>
               <div className="p-8 md:w-2/3 flex flex-col justify-center">

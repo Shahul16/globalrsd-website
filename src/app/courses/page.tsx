@@ -26,7 +26,7 @@ export default function CoursesPage() {
             <Reveal key={c.slug} delay={(i % 3) * 90}>
               <Link href={`/courses/${c.slug}`} className="card card-lift group flex h-full flex-col overflow-hidden">
                 <div className="img-zoom h-44">
-                  <img src={c.image ?? courseImage(c.category)} alt="" loading="lazy" />
+                  <img src={c.image ?? courseImage(c.category)} alt="" loading="lazy" width={500} height={300} className="w-full h-full object-cover" />
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                 <div className="flex items-center justify-between gap-2">

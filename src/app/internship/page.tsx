@@ -167,7 +167,7 @@ export default function InternshipPage() {
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <Reveal>
             <div className="img-zoom h-72 overflow-hidden rounded-xl shadow-md sm:h-96">
-              <img src={IMAGES.aboutTeam} alt="Interns and graduates collaborating on a real project" loading="lazy" />
+              <img src={IMAGES.aboutTeam} alt="Interns and graduates collaborating on a real project" loading="lazy" width={800} height={500} className="w-full h-full object-cover" />
             </div>
           </Reveal>
           <Reveal delay={100}>

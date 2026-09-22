@@ -99,21 +99,18 @@ export default function Turnstile({
       }
     };
 
-    if (window.turnstile) {
-      if (typeof window.turnstile.ready === "function") {
-        window.turnstile.ready(renderWidget);
-      } else {
-        renderWidget();
-      }
+    if (window.turnstile && typeof window.turnstile.render === "function") {
+      renderWidget();
     } else {
-      // Poll for script load
+      window.addEventListener("turnstile:ready", renderWidget);
+      // Poll fallback
       let attempts = 0;
       checkInterval = setInterval(() => {
         attempts++;
-        if (window.turnstile) {
+        if (window.turnstile && typeof window.turnstile.render === "function") {
           if (checkInterval) clearInterval(checkInterval);
           renderWidget();
-        } else if (attempts > 50) {
+        } else if (attempts > 60) {
           if (checkInterval) clearInterval(checkInterval);
         }
       }, 100);
@@ -121,8 +118,9 @@ export default function Turnstile({
 
     return () => {
       mounted = false;
+      window.removeEventListener("turnstile:ready", renderWidget);
       if (checkInterval) clearInterval(checkInterval);
-      if (widgetIdRef.current && window.turnstile) {
+      if (widgetIdRef.current && window.turnstile && typeof window.turnstile.remove === "function") {
         try {
           window.turnstile.remove(widgetIdRef.current);
         } catch {

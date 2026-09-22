@@ -59,7 +59,7 @@ export default async function EventDetailPage({
           </div>
           <div className="space-y-6">
             <div className="overflow-hidden rounded-md border border-white/10 shadow-card">
-              <img src={event.image ?? eventImage(event.category)} alt="" className="h-52 w-full object-cover" />
+              <img src={event.image ?? eventImage(event.category)} alt="" width={800} height={350} className="h-52 w-full object-cover" />
             </div>
             <Countdown target={event.date} label={event.acronym} />
           </div>

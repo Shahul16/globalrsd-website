@@ -41,7 +41,7 @@ function EventCard({ event, delay }: { event: Event; delay: number }) {
     <Reveal delay={delay}>
       <Link href={`/events/${event.slug}`} className="card card-lift group flex h-full flex-col overflow-hidden">
         <div className="img-zoom h-48">
-          <img src={event.image ?? eventImage(event.category)} alt="" loading="lazy" />
+          <img src={event.image ?? eventImage(event.category)} alt="" loading="lazy" width={600} height={380} className="w-full h-full object-cover" />
         </div>
         <div className="flex flex-1 flex-col p-6">
           <div className="flex flex-wrap items-center gap-3">

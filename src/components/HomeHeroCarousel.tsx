@@ -53,6 +53,8 @@ export default function HomeHeroCarousel({ slides, upcomingEvent }: HomeHeroCaro
                 decoding="async"
                 loading={index === 0 ? "eager" : "lazy"}
                 fetchPriority={index === 0 ? "high" : "low"}
+                width={1920}
+                height={1080}
                 className={`h-full w-full object-cover object-center ${
                   isActive ? "animate-heroKenBurns" : ""
                 }`}

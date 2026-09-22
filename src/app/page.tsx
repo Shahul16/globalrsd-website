@@ -122,7 +122,7 @@ export default function HomePage() {
             <Reveal key={c.slug} delay={i * 100}>
               <Link href={`/courses/${c.slug}`} className="card card-lift group block h-full overflow-hidden">
                 <div className="img-zoom h-40">
-                  <img src={c.image ?? courseImage(c.category)} alt="" loading="lazy" />
+                  <img src={c.image ?? courseImage(c.category)} alt="" loading="lazy" width={500} height={300} className="w-full h-full object-cover" />
                 </div>
                 <div className="p-6">
                 <p className="text-xs font-semibold uppercase tracking-widest text-gold-dark">{c.category} · {c.level}</p>

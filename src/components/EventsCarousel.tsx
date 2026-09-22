@@ -49,7 +49,7 @@ export default function EventsCarousel({ events }: { events: Event[] }) {
             className="group block w-[85%] shrink-0 snap-start overflow-hidden rounded-lg border border-white/10 bg-white/5 transition duration-300 hover:-translate-y-1.5 hover:border-gold/60 hover:bg-white/10 hover:shadow-2xl sm:w-[46%] lg:w-[31%]"
           >
             <div className="img-zoom relative h-44">
-              <img src={e.image ?? eventImage(e.category)} alt="" loading="lazy" />
+              <img src={e.image ?? eventImage(e.category)} alt="" loading="lazy" width={600} height={350} className="w-full h-full object-cover" />
               <span className="absolute left-3 top-3 rounded bg-navy/85 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-gold backdrop-blur-sm">
                 {e.category}
               </span>
