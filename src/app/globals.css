@@ -61,7 +61,9 @@ h4 {
   .animate-marquee,
   .animate-fadeUp,
   .animate-shimmer,
-  .animate-float {
+  .animate-float,
+  .animate-heroKenBurns,
+  .animate-heroProgress {
     animation: none !important;
   }
   html {

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
-import { awardCategories, awardCycles, awards } from "@/lib/data/awards";
+import { awardCategories, awards } from "@/lib/data/awards";
 import { DemoForm, Field } from "@/components/forms";
 
 export const metadata: Metadata = {
@@ -12,7 +12,6 @@ export const metadata: Metadata = {
 };
 
 const allCategories = awards.map((a) => a.name);
-const cycleOptions = awardCycles.map((cycle) => `${cycle.cycle}, ${cycle.month}`);
 
 export default function AwardsPage() {
   return (
@@ -20,7 +19,7 @@ export default function AwardsPage() {
       <PageHero
         eyebrow="Globalrsd Global Awards 2026"
         title="Recognising Excellence in Research & Skills"
-          intro="Celebrating outstanding researchers, educators, institutions and industry leaders from around the world. Four fixed award cycles run each year, and nominations are submitted online at no cost."
+          intro="Celebrating outstanding researchers, educators, institutions and industry leaders from around the world. Nominations are submitted online at no cost."
       />
 
       {/* Intro + quick actions */}
@@ -39,10 +38,10 @@ export default function AwardsPage() {
             <h2 className="flourish font-display text-3xl font-bold">About the Awards</h2>
             <p className="mt-6 leading-relaxed text-muted">
               The Globalrsd Global Awards honour excellence, innovation and impact across
-              the research and skills-development community. Four fixed award cycles run
-              each year, recognising people and organisations advancing knowledge and
-              building capability worldwide. Winners join a distinguished international
-              network and are profiled across Globalrsd channels.
+              the research and skills-development community, recognising people and
+              organisations advancing knowledge and building capability worldwide.
+              Winners join a distinguished international network and are profiled across
+              Globalrsd channels.
             </p>
             <p className="mt-4 leading-relaxed text-muted">
               Anyone may submit a nomination, on their own behalf or for a colleague,
@@ -55,48 +54,9 @@ export default function AwardsPage() {
               <h3 className="font-display text-xl font-bold">At a glance</h3>
               <ul className="mt-4 space-y-3 text-sm text-muted">
                 <li className="flex justify-between gap-4"><span>Award categories</span><span className="font-semibold text-navy">{awards.length}</span></li>
-                <li className="flex justify-between gap-4"><span>Annual cycles</span><span className="font-semibold text-navy">4 fixed cycles</span></li>
-                <li className="flex justify-between gap-4"><span>Cycle months</span><span className="font-semibold text-navy">Feb, May, Aug, Nov</span></li>
                 <li className="flex justify-between gap-4"><span>Nomination fee</span><span className="font-semibold text-navy">Free</span></li>
               </ul>
               <a href="#nominate" className="btn-gold mt-6 w-full">Nominate now</a>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Annual cycle */}
-      <section className="bg-cream py-16" aria-labelledby="cycle-heading">
-        <div className="mx-auto max-w-5xl px-4">
-          <Reveal>
-            <h2 id="cycle-heading" className="flourish font-display text-3xl font-bold">Annual Awards Cycle</h2>
-            <p className="mt-4 max-w-2xl text-muted">
-              The awards programme follows a fixed four-cycle calendar each year. Each cycle opens in the month shown below, with a three-month interval between cycles.
-            </p>
-          </Reveal>
-          <Reveal delay={120}>
-            <div className="card mt-8 overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full min-w-[34rem] text-left text-sm">
-                  <caption className="sr-only">Annual awards cycle schedule</caption>
-                  <thead className="bg-navy text-white">
-                    <tr>
-                      <th scope="col" className="px-6 py-4 font-semibold">Cycle</th>
-                      <th scope="col" className="px-6 py-4 font-semibold">Month</th>
-                      <th scope="col" className="px-6 py-4 font-semibold">Interval</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-line">
-                    {awardCycles.map((cycle) => (
-                      <tr key={cycle.cycle} className="bg-white">
-                        <th scope="row" className="px-6 py-4 font-semibold text-navy">{cycle.cycle}</th>
-                        <td className="px-6 py-4 text-muted">{cycle.month}</td>
-                        <td className="px-6 py-4 text-muted">{cycle.interval}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
             </div>
           </Reveal>
         </div>
@@ -231,8 +191,8 @@ export default function AwardsPage() {
           </h2>
           <p className="mt-4 text-muted">
             Nominations may be made on your own behalf or for a colleague or
-            institution. Select the cycle and category that best fit the nominee,
-            then include the required supporting document. There is no fee to nominate.
+            institution. Select the category that best fits the nominee, then include
+            the required supporting document. There is no fee to nominate.
           </p>
         </Reveal>
         <div className="card mt-8 p-8">
@@ -245,7 +205,6 @@ export default function AwardsPage() {
               <Field label="Your full name" id="nominator-name" autoComplete="name" />
               <Field label="Your email" id="nominator-email" type="email" autoComplete="email" />
             </div>
-            <Field label="Award cycle" id="cycle" as="select" options={cycleOptions} />
             <Field label="Nomination type" id="nomination-type" as="select" options={["Self-nomination", "Nominating someone else"]} />
             <Field label="Award category" id="category" as="select" options={allCategories} />
             <Field label="Nominee name (individual or institution)" id="nominee" />
@@ -272,14 +231,14 @@ export default function AwardsPage() {
           <div className="mt-8 space-y-4">
             {[
               ["Is there a fee to nominate?", "No. Nominating is free, whether you nominate yourself or someone else."],
-              ["When can I submit a nomination?", "There are four fixed cycles each year: February, May, August and November. Submit your nomination for the cycle that best suits your timing."],
+              ["When can I submit a nomination?", "Nominations can be submitted online whenever you are ready with the required information and supporting document."],
               ["Do nominees have to be Globalrsd members?", "No. Membership is not required to nominate or to receive an award."],
               ["Can I nominate myself?", "Yes. Self-nominations are welcome and assessed on the same basis as third-party nominations."],
               ["What supporting document is required?", "Every nomination must include a CV or another relevant supporting document in PDF or Word format, up to 10 MB."],
               ["Can I include online supporting evidence?", "Yes. You can include publication, profile, portfolio and social media links in the supporting links field."],
               ["How are winners chosen?", "An independent panel of academics and industry leaders assesses each entry against significance, excellence, innovation and evidence."],
               ["What happens after I submit?", "You will receive confirmation by email. The awards team then checks the submission for completeness before it goes to the independent judging panel."],
-              ["Where are award enquiries handled?", "For questions about nominations and cycles, contact awards@globalrsd.co.uk."],
+              ["Where are award enquiries handled?", "For questions about nominations, contact awards@globalrsd.co.uk."],
             ].map(([q, a], i) => (
               <Reveal key={q} delay={i * 60}>
                 <details className="card group p-5">

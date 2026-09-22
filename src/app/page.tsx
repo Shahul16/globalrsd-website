@@ -1,59 +1,124 @@
 import Link from "next/link";
-import Image from "next/image";
-import Countdown from "@/components/Countdown";
 import CountUp from "@/components/CountUp";
 import TrustBadges from "@/components/TrustBadges";
 import EventsCarousel from "@/components/EventsCarousel";
 import PartnersGrid from "@/components/PartnersGrid";
 import Testimonials from "@/components/Testimonials";
+import HomeHeroCarousel from "@/components/HomeHeroCarousel";
 import Reveal from "@/components/Reveal";
-import { nextEvent, events } from "@/lib/data/events";
+import { events, nextEvent } from "@/lib/data/events";
 import { courses } from "@/lib/data/courses";
 import { SITE } from "@/lib/site";
-import { IMAGES, eventImage, courseImage } from "@/lib/images";
+import { courseImage } from "@/lib/images";
+import type { HeroSlide } from "@/lib/hero";
 
-const services = [
+/**
+ * The core programmes and services the institute delivers. Each one takes the
+ * spotlight in the home hero slider with its own tailored headline, narrative copy,
+ * calls to action, contextual spotlight card, and background photograph.
+ */
+const services: HeroSlide[] = [
   {
+    id: "conferences",
+    tabTitle: "Conferences",
     title: "Research Conferences",
     href: "/events",
-    description: "Peer-reviewed international conferences with publication pathways in indexed journals.",
+    cta: "Explore conferences",
+    eyebrow: `Est. London · Serving ${SITE.stats.countries} Countries`,
+    headline: "Advancing Research.",
+    highlight: "International Conferences & Symposia",
+    description:
+      "The Global Institute of Research & Skills Development unites scholars and professionals through international conferences, certified courses, global awards and a thriving membership community.",
+    primaryCta: { label: "Book Conference Tickets", href: "/events/icmdr-2026" },
+    secondaryCta: { label: "Explore All Conferences", href: "/events" },
+    cardType: "conference",
+    image: "/ev-icmdr-2026.jpg",
     icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
   },
   {
-    title: "Skills Workshops",
-    href: "/events",
-    description: "Intensive, small-group workshops led by practitioners — from academic writing to data analysis.",
-    icon: "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z",
-  },
-  {
+    id: "courses",
+    tabTitle: "Online Courses",
     title: "Online Courses",
     href: "/courses",
-    description: "Tutor-supported certified courses in research methods, data, writing and leadership.",
+    cta: "Browse courses",
+    eyebrow: "Certified Online Learning · CPD Accredited",
+    headline: "Developing Practical Skills.",
+    highlight: "Certified Online Courses",
+    description:
+      "Tutor-supported certified courses in research methods, data science, AI cybersecurity, writing and leadership with verifiable UK CPD credentials.",
+    primaryCta: { label: "Browse Certified Courses", href: "/courses" },
+    secondaryCta: { label: "View Course Syllabus", href: "/courses" },
+    cardType: "course",
+    image: "/co-data-science-with-python.jpg",
     icon: "M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342",
   },
   {
+    id: "awards",
+    tabTitle: "Global Awards",
     title: "Global Awards",
     href: "/awards",
-    description: "Recognising outstanding individuals and institutions across academia and industry.",
+    cta: "Explore the awards",
+    eyebrow: "Global Recognition · Academic & Industry Honours",
+    headline: "Celebrating Excellence.",
+    highlight: "Globalrsd Annual Awards 2026",
+    description:
+      "Recognising outstanding individuals and institutions across academia and industry. Nominations are open online at zero cost and assessed by an independent academic panel.",
+    primaryCta: { label: "Submit a Nomination", href: "/awards#nominate" },
+    secondaryCta: { label: "Explore Award Categories", href: "/awards" },
+    cardType: "award",
+    image: "/awards.png",
     icon: "M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 002.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 012.916.52 6.003 6.003 0 01-5.395 4.972m0 0a6.726 6.726 0 01-2.749 1.35m0 0a6.772 6.772 0 01-3.044 0",
   },
   {
+    id: "membership",
+    tabTitle: "Membership",
     title: "Membership",
     href: "/membership",
-    description: "Join a global community with discounts, mentoring and members-only briefings.",
+    cta: "Join as a member",
+    eyebrow: "Worldwide Scholar Network · 50+ Nations",
+    headline: "Uniting Global Scholars.",
+    highlight: "Globalrsd Membership Community",
+    description:
+      "Join a thriving global community with 20% discounts on every conference and course, post-nominal credentials (FGIRSD / MGIRSD), and direct research mentorship opportunities.",
+    primaryCta: { label: "Become a Member", href: "/membership" },
+    secondaryCta: { label: "Explore Benefits", href: "/membership" },
+    cardType: "membership",
+    image: "/membership.jpg",
     icon: "M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z",
   },
   {
-    title: "Education Partnerships",
+    id: "workshops",
+    tabTitle: "Workshops",
+    title: "Skills Workshops",
     href: "/events",
-    description: "Partnership programmes for international education, student mobility and institutional collaboration.",
-    icon: "M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418",
+    cta: "Browse workshops",
+    eyebrow: "Practitioner-Led Training · Small Cohorts",
+    headline: "Mastering Methodologies.",
+    highlight: "Intensive Skills Workshops",
+    description:
+      "Intensive, small-group masterclasses led by practitioners and scholars — from academic writing and indexed journal publishing to empirical data analysis.",
+    primaryCta: { label: "Browse Workshops", href: "/events" },
+    secondaryCta: { label: "View Workshop Schedule", href: "/events" },
+    cardType: "workshop",
+    image: "/ev-research-writing-masterclass-2026.jpg",
+    icon: "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z",
   },
   {
-    title: "Internships",
-    href: "/internship",
-    description: "International, multi-domain internships with real project experience and CPD certification.",
-    icon: "M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222",
+    id: "partnerships",
+    tabTitle: "Partnerships & Internships",
+    title: "Education Partnerships",
+    href: "/partner",
+    cta: "Partner with us",
+    eyebrow: "Institutional Alliances · Career Pathways",
+    headline: "Fostering Collaboration.",
+    highlight: "Partnerships & Accredited Internships",
+    description:
+      "Partnership programmes for international education, student mobility and institutional collaboration, alongside accredited CPD graduate research internships.",
+    primaryCta: { label: "Partner With Us", href: "/partner" },
+    secondaryCta: { label: "Apply for Internship", href: "/internship" },
+    cardType: "partnership",
+    image: "/about-feature.jpg",
+    icon: "M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418",
   },
 ];
 
@@ -64,60 +129,7 @@ export default function HomePage() {
 
   return (
     <>
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-navy text-white">
-        <img
-          src={IMAGES.heroConference}
-          alt=""
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-40"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/80 to-navy/60"
-        />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:py-28 lg:grid-cols-2">
-          <div>
-            <p className="animate-fadeUp text-sm font-semibold uppercase tracking-widest text-gold">
-              Est. London · Serving {SITE.stats.countries} countries
-            </p>
-            <h1 className="mt-4 animate-fadeUp font-display text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl" style={{ animationDelay: "120ms" }}>
-              Advancing Research.
-              <br />
-              <span className="text-gold">Developing Skills.</span>
-            </h1>
-            <p className="mt-6 max-w-xl animate-fadeUp text-lg leading-relaxed text-slate-300" style={{ animationDelay: "240ms" }}>
-              The Global Institute of Research &amp; Skills Development unites
-              scholars and professionals through international conferences,
-              certified courses, global awards and a thriving membership
-              community.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4 animate-fadeUp" style={{ animationDelay: "360ms" }}>
-              <Link href={`/events/${upcoming.slug}`} className="btn-gold">
-                Book Conference Tickets
-              </Link>
-              <Link
-                href="/membership"
-                className="inline-flex items-center justify-center rounded-md border-2 border-gold px-5 py-2.5 font-semibold text-gold transition hover:bg-gold hover:text-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-              >
-                Become a Member
-              </Link>
-            </div>
-          </div>
-          <div className="flex flex-col items-start gap-8 lg:items-end">
-            <Image
-              src="/logo-white.png"
-              alt="Globalrsd heraldic crest"
-              width={300}
-              height={72}
-              priority
-              unoptimized
-              className="hidden w-72 h-auto animate-shimmer lg:block"
-            />
-            <Countdown target={upcoming.date} label={upcoming.acronym} />
-          </div>
-        </div>
-      </section>
+      <HomeHeroCarousel slides={services} upcomingEvent={upcoming} />
 
       {/* STATS */}
       <section className="border-b border-slate-200 bg-cream">
@@ -229,7 +241,7 @@ export default function HomePage() {
       <section className="bg-gradient-to-br from-navy to-navy-light py-20 text-center text-white">
         <Reveal className="mx-auto max-w-3xl px-4">
           <h2 className="font-display text-3xl font-bold text-white sm:text-4xl">
-            Join a Global Community of Researchers &amp; Professionals
+            Join a Global Community of Researchers & Professionals
           </h2>
           <p className="mt-4 text-lg text-slate-300">
             Members enjoy a 20% discount on every conference ticket, course
