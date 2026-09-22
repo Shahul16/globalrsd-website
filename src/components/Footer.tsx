@@ -62,7 +62,7 @@ export default function Footer() {
     <footer className="bg-navy-dark text-slate-300">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1.3fr]">
         <div>
-          <Image src="/logo-white.png" alt={SITE.name} width={230} height={85} unoptimized className="h-16 w-auto sm:h-[76px]" />
+          <Image src={SITE.logoWhite} alt={SITE.name} width={230} height={85} unoptimized className="h-16 w-auto sm:h-[76px]" />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-400">
             Advancing research excellence and practical skills through international
             conferences, certified courses, awards and a worldwide professional community.

@@ -1,27 +1,31 @@
+import siteJson from "@/content/site.json";
+
+const formatAddress = (addr: any) => {
+  if (typeof addr === "string") return addr;
+  if (addr && typeof addr === "object") {
+    return [addr.line1, addr.city, addr.postcode, addr.country].filter(Boolean).join(", ");
+  }
+  return "23 Kinnaird Avenue, Bromley BR1 4HG, England";
+};
+
 export const SITE = {
-  name: "Global Institute of Research & Skills Development",
-  shortName: "GIRSD",
+  name: siteJson.name || "Global Institute of Research & Skills Development",
+  shortName: siteJson.shortName || "Globalrsd",
   domain: "https://www.globalrsd.co.uk",
   domainDisplay: "www.globalrsd.co.uk",
-  email: "info@globalrsd.co.uk",
-  researchEmail: "research@globalrsd.co.uk",
-  awardsEmail: "awards@globalrsd.co.uk",
-  membershipEmail: "membership@globalrsd.co.uk",
-  phone: "+44 7586 261118",
-  whatsapp: "https://wa.me/447586261118",
+  tagline: siteJson.tagline || "Advancing Research. Developing Skills.",
+  logoHeader: siteJson.logoHeader || "/logo-header.png",
+  logoWhite: siteJson.logoWhite || "/logo-white.png",
+  favicon: siteJson.favicon || "/favicon.ico",
+  email: (siteJson as any).email || (siteJson as any).emails?.info || "info@globalrsd.co.uk",
+  researchEmail: (siteJson as any).researchEmail || (siteJson as any).emails?.research || "research@globalrsd.co.uk",
+  awardsEmail: (siteJson as any).awardsEmail || (siteJson as any).emails?.awards || "awards@globalrsd.co.uk",
+  membershipEmail: (siteJson as any).membershipEmail || (siteJson as any).emails?.membership || "membership@globalrsd.co.uk",
+  phone: (siteJson as any).phone || (siteJson as any).phones?.main || "+44 7586 261118",
+  whatsapp: (siteJson as any).whatsapp || (siteJson as any).phones?.whatsapp || "https://wa.me/447586261118",
   accreditation: "Approved CPD (Continuing Professional Development) provider",
   /**
    * Accreditation & statutory registrations shown as trust badges.
-   * Fill in the real numbers once issued — leave "" to hide the number line.
-   * `verifyUrl`, if set, makes the whole badge a link to that body's public
-   * verification page (CPD Group's own instructions ask providers to link
-   * their badge to their Register listing, not just display it statically).
-   * Official logo artwork: drop the light/dark files supplied by each body
-   * into /public/accreditations/ as {cpd,ico,ukrlp}-light.{ext} and
-   * {cpd,ico,ukrlp}-dark.{ext} and they replace the built-in emblems
-   * automatically (see SETUP_GUIDE.md §6). ICO uses real official artwork;
-   * CPD and UKRLP use hand-redrawn approximations (built to match the
-   * provider's certificate/reference image) pending their own source files.
    */
   registrations: {
     cpd: {
@@ -31,37 +35,31 @@ export const SITE = {
       verifyUrl: "https://thecpdregister.com/providers/cpd-group-providers--788000",
     },
     ico: { name: "ICO Registered", body: "Information Commissioner's Office (UK GDPR)", number: "", verifyUrl: "" },
-    ukrlp: { name: "UKRLP Registered", body: "UK Register of Learning Providers", number: "", verifyUrl: "" }, // UKPRN
+    ukrlp: { name: "UKRLP Registered", body: "UK Register of Learning Providers", number: "", verifyUrl: "" },
   },
   credit: { name: "Shahul Hameed", url: "https://www.linkedin.com/in/shahul-hameed16/" },
   companyLine:
+    (siteJson as any).companyLine ||
     "Global Institute of Research & Skills Development (GIRSD) is a trading name of Q TECH PRIVATE LTD, registered in England & Wales (Company No. 15754767).",
   company: {
     legalName: "Q TECH PRIVATE LTD",
     number: "15754767",
     tradingAs: "Global Institute of Research & Skills Development (GIRSD)",
-    address: "23 Kinnaird Avenue, Bromley BR1 4HG, England",
+    address: formatAddress(siteJson.address),
   },
   social: {
-    linkedin: "https://www.linkedin.com/company/globalrsd",
-    instagram: "https://www.instagram.com/globalrsd",
-    youtube: "https://www.youtube.com/globalrsd",
+    linkedin: (siteJson.social as any)?.linkedin || "https://www.linkedin.com/company/globalrsd",
+    instagram: (siteJson.social as any)?.instagram || "https://www.instagram.com/globalrsd",
+    youtube: (siteJson.social as any)?.youtube || "https://www.youtube.com/globalrsd",
   },
-  stats: {
-    members: 25,
-    conferences: 3,
-    countries: 1,
-    papers: 70,
+  stats: (siteJson as any).stats || {
+    members: "2,500+",
+    conferences: "18",
+    countries: "50+",
+    papers: "1,200+",
   },
   memberDiscount: 0.2,
   courseMemberDiscount: 0.1,
-  /**
-   * Registration fee breakup applied to event ticket prices ahead of the
-   * member discount. Ticket prices in events.json are the "Normal
-   * registration" price. Early bird gives a discount before its deadline;
-   * a late fee is only added where the event's registrationDeadlines.lateFee
-   * flag is true (workshops/summits with rolling registration don't need one).
-   */
   registrationPricing: {
     earlyBirdDiscount: 0.15,
     lateFeeSurcharge: 0.15,

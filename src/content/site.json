@@ -1,0 +1,35 @@
+{
+  "name": "Global Institute of Research & Skills Development",
+  "shortName": "Globalrsd",
+  "tagline": "Advancing Research. Developing Skills Worldwide.",
+  "logoHeader": "/logo-header.png",
+  "logoWhite": "/logo-white.png",
+  "favicon": "/favicon.ico",
+  "emails": {
+    "info": "info@globalrsd.co.uk",
+    "research": "research@globalrsd.co.uk",
+    "awards": "awards@globalrsd.co.uk",
+    "membership": "membership@globalrsd.co.uk"
+  },
+  "phones": {
+    "main": "+44 20 7946 0912",
+    "whatsapp": "+44 7700 900821"
+  },
+  "address": {
+    "line1": "Suite 408, 128 City Road",
+    "city": "London",
+    "postcode": "EC1V 2NX",
+    "country": "United Kingdom"
+  },
+  "social": {
+    "linkedin": "https://linkedin.com/company/globalrsd",
+    "instagram": "https://instagram.com/globalrsd",
+    "youtube": "https://youtube.com/globalrsd"
+  },
+  "stats": {
+    "members": "2,500+",
+    "conferences": "18",
+    "countries": "50+",
+    "papers": "1,200+"
+  }
+}

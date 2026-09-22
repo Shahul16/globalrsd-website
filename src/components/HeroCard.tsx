@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Countdown from "@/components/Countdown";
+import { SITE } from "@/lib/site";
 import type { HeroSlide } from "@/lib/hero";
 
 type HeroCardProps = {
@@ -27,7 +28,7 @@ export default function HeroCard({ slide, upcomingEvent }: HeroCardProps) {
         <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gold/15 blur-2xl pointer-events-none" />
         <div className="flex flex-col items-start gap-4">
           <Image
-            src="/logo-white.png"
+            src={SITE.logoWhite}
             alt="Globalrsd heraldic crest"
             width={260}
             height={62}

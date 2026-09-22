@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useAuth } from "@/lib/auth";
+import { SITE } from "@/lib/site";
 
 type NavItem = { href: string; label: string; children?: { href: string; label: string }[] };
 
@@ -81,7 +82,7 @@ export default function Header() {
       <div className="bg-white border-b border-line">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2">
           <Link href="/" className="flex items-center gap-3" aria-label="Globalrsd home">
-            <Image src="/logo-header.png" alt="Globalrsd — Global Institute of Research & Skills Development" width={220} height={80} priority unoptimized className="h-16 w-auto max-w-[220px] object-contain sm:h-20" />
+            <Image src={SITE.logoHeader} alt="Globalrsd — Global Institute of Research & Skills Development" width={220} height={80} priority unoptimized className="h-16 w-auto max-w-[220px] object-contain sm:h-20" />
           </Link>
 
           <nav aria-label="Main" className="hidden lg:block">

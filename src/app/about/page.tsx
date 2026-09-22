@@ -6,6 +6,7 @@ import { founder, committees } from "@/lib/data/people";
 import { posts } from "@/lib/data/news";
 import { SITE } from "@/lib/site";
 import { IMAGES } from "@/lib/images";
+import pagesData from "@/content/pages.json";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -15,12 +16,18 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const about = pagesData?.about || {
+    eyebrow: "About Globalrsd",
+    title: "Where Scholarship Meets Capability",
+    intro: "Globalrsd is a UK-based institute connecting research excellence with practical skills development for a worldwide community of academics, students and professionals.",
+  };
+
   return (
     <>
       <PageHero
-        eyebrow="About Globalrsd"
-        title="Where Scholarship Meets Capability"
-        intro="Globalrsd is a UK-based institute connecting research excellence with practical skills development for a worldwide community of academics, students and professionals."
+        eyebrow={about.eyebrow || "About Globalrsd"}
+        title={about.title || "Where Scholarship Meets Capability"}
+        intro={about.intro || "Globalrsd is a UK-based institute connecting research excellence with practical skills development for a worldwide community of academics, students and professionals."}
       />
 
       {/* Overview */}
@@ -104,6 +111,30 @@ export default function AboutPage() {
           </Reveal>
         </div>
       </section>
+
+      {/* Leadership / Founder Spotlight */}
+      {about.founder && (
+        <section className="mx-auto max-w-5xl px-4 py-16">
+          <Reveal>
+            <div className="card overflow-hidden md:flex items-center">
+              <div className="md:w-1/3 bg-slate-100 flex items-center justify-center p-6 shrink-0">
+                <img 
+                  src={about.founder.image || "/about-feature.jpg"} 
+                  alt={about.founder.name || "Founder"} 
+                  className="w-48 h-48 md:w-full md:h-64 rounded-xl object-cover shadow-sm" 
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-8 md:w-2/3 flex flex-col justify-center">
+                <span className="text-xs font-bold uppercase tracking-widest text-gold-dark">Leadership</span>
+                <h3 className="font-display text-2xl font-bold text-navy mt-1">{about.founder.name}</h3>
+                <p className="text-sm font-medium text-slate-500">{about.founder.role} · {about.founder.affiliation}</p>
+                <p className="mt-4 leading-relaxed text-slate-700">{about.founder.bio}</p>
+              </div>
+            </div>
+          </Reveal>
+        </section>
+      )}
 
       {/* Committees — hidden for now (kept for future use) */}
       {false && (
