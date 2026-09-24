@@ -1,6 +1,6 @@
 {
   "name": "Global Institute of Research & Skills Development",
-  "shortName": "Globalrsd",
+  "shortName": "GIRSD",
   "tagline": "Advancing Research. Developing Skills Worldwide.",
   "logoHeader": "/logo-header.png",
   "logoWhite": "/logo-white.png",
@@ -15,16 +15,20 @@
     "main": "+44 20 7946 0912",
     "whatsapp": "+44 7700 900821"
   },
-  "address": "23 Kinnaird Avenue, Bromley BR1 4HG, England.",
+  "address": "No 23 Kinnaird Avenue, Bromley BR1 4HG, England, United Kingdom",
   "social": {
     "linkedin": "https://linkedin.com/company/globalrsd",
     "instagram": "https://instagram.com/globalrsd",
     "youtube": "https://youtube.com/globalrsd"
   },
   "stats": {
-    "members": "2,500+",
-    "conferences": "18",
-    "countries": "50+",
-    "papers": "1,200+"
-  }
+    "members": 140,
+    "conferences": 7,
+    "countries": 1,
+    "papers": 150
+  },
+  "email": "info@globalrsd.co.uk",
+  "membershipEmail": "membership@globalrsd.co.uk",
+  "awardsEmail": "awards@globalrsd.co.uk",
+  "phone": "+447586261118"
 }
