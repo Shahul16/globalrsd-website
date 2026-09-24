@@ -5,7 +5,7 @@
     "level": "Intermediate",
     "duration": "4 weeks (8 hours)",
     "effort": "2 hours per week + self-paced labs",
-    "price": 450,
+    "price": 5,
     "category": "Skills Development Courses",
     "summary": "A deep dive into the integration of artificial intelligence with core cybersecurity practices — detect, analyse and respond to cyber threats with intelligent systems.",
     "description": "Globalrsd's AI in Cybersecurity Course offers a deep dive into the integration of artificial intelligence with core cybersecurity practices. This course is structured to deliver a strong foundation in AI technologies while applying them to real-world security challenges. You will gain both theoretical understanding and hands-on expertise in using intelligent systems to detect, analyse and respond to cyber threats, and learn how AI is revolutionising threat detection, incident response and predictive defence. Technologies covered include TensorFlow, Scikit-learn, Keras, Pandas & NumPy, the ELK Stack, Snort with AI integration, Hugging Face Transformers, Jupyter Notebooks and OpenCV.",
