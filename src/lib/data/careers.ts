@@ -2,16 +2,42 @@ export type JobOpening = {
   id: string;
   title: string;
   department: string;
-  type: "Full-time" | "Part-time" | "Contract" | "Freelance";
+  type: "Full-time" | "Part-time" | "Contract" | "Freelance" | "Internship / Part-time" | "Internship";
   location: string;
   salary: string;
   package: string;
   summary: string;
   responsibilities: string[];
   requirements: string[];
+  highlight?: string;
 };
 
 export const openings: JobOpening[] = [
+  {
+    id: "events-operations-intern",
+    title: "Multidisciplinary Events & Operations Intern",
+    department: "Events & Operations",
+    type: "Internship / Part-time",
+    location: "Remote (Worldwide) / Hybrid",
+    salary: "Performance-based",
+    package: "Flexible working, free GlobalRSD membership, networking opportunities, referral bonus, selected programme access, and internship certificate",
+    highlight: "Actively Hiring • Immediate Start",
+    summary:
+      "Support GlobalRSD's international events, programmes, marketing, and day-to-day operations while gaining practical multidisciplinary experience and building a global professional network.",
+    responsibilities: [
+      "Support events, webinars, workshops, and professional programmes",
+      "Assist with marketing, communications, registrations, and coordination",
+      "Support research, documentation, and general business operations",
+      "Work with international teams and professional stakeholders",
+    ],
+    requirements: [
+      "Students, graduates, or early-career professionals from any relevant discipline",
+      "Good communication and organisational skills",
+      "Comfortable working remotely and independently",
+      "Willingness to learn and contribute across multiple functions",
+      "Previous experience is an advantage but not essential",
+    ],
+  },
   {
     id: "conference-programme-coordinator",
     title: "Conference & Programme Coordinator",

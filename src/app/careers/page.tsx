@@ -82,7 +82,13 @@ export default function CareersPage() {
                       <p className="mt-2 text-sm font-semibold text-navy">{job.salary}</p>
                       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600"><span className="font-semibold text-navy">Package:</span> {job.package}</p>
                     </div>
-                    <div className="flex shrink-0 flex-wrap gap-2">
+                    <div className="flex shrink-0 flex-wrap items-center gap-2">
+                      {job.highlight && (
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-800 shadow-sm">
+                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-600 animate-pulse" />
+                          {job.highlight}
+                        </span>
+                      )}
                       {[job.department, job.type, job.location].map((tag) => (
                         <span key={tag} className="rounded-full border border-gold/50 bg-gold/10 px-3 py-1 text-xs font-semibold text-gold-dark">
                           {tag}
@@ -161,7 +167,11 @@ export default function CareersPage() {
                     label="Position"
                     id="position"
                     as="select"
-                    options={[...openings.map((j) => j.title), "Speculative application"]}
+                    options={[
+                      ...openings.map((j) => j.title),
+                      "Other / General Application",
+                      "Speculative / Future Roles",
+                    ]}
                   />
                 </div>
                 <Field label="LinkedIn profile (optional)" id="linkedin" type="url" required={false} />
