@@ -499,11 +499,17 @@ export default function AdminPage() {
                   />
                 </div>
                 <div className="sm:col-span-2">
-                  <label className="text-xs font-semibold text-slate-300">London HQ Address</label>
+                  <label className="text-xs font-semibold text-slate-300">Registered Office / HQ Address</label>
                   <input
                     type="text"
                     className="input mt-1 w-full bg-slate-950 border-white/20 text-white"
-                    value={siteData.address || ""}
+                    value={
+                      typeof siteData.address === "string"
+                        ? siteData.address
+                        : siteData.address && typeof siteData.address === "object"
+                        ? [siteData.address.line1, [siteData.address.city, siteData.address.postcode].filter(Boolean).join(" "), siteData.address.country].filter(Boolean).join(", ")
+                        : ""
+                    }
                     onChange={(e) => setSiteData({ ...siteData, address: e.target.value })}
                   />
                 </div>

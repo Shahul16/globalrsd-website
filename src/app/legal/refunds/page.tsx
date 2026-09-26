@@ -15,7 +15,7 @@ export default function RefundsPage() {
         This policy explains when refunds are available for Globalrsd event
         tickets, online courses and memberships. It sits alongside your
         statutory rights as a UK consumer, which are unaffected. To request a
-        refund or cancellation, email info@globalrsd.co.uk from the address on
+        refund or cancellation, email finance@globalrsd.co.uk from the address on
         your account, quoting your order reference.
       </p>
 

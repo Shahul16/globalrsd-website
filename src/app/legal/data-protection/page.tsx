@@ -52,7 +52,7 @@ export default function DataProtectionPage() {
       <h2>5. Data subject requests</h2>
       <p>
         Requests to access, rectify, erase, restrict, port or object to
-        processing can be made to info@globalrsd.co.uk. We verify the identity
+        processing can be made to privacy@globalrsd.co.uk. We verify the identity
         of requesters, respond within one calendar month, and keep a log of
         requests and outcomes. There is normally no fee; where a request is
         manifestly unfounded or excessive we may charge a reasonable fee or
@@ -79,7 +79,7 @@ export default function DataProtectionPage() {
 
       <h2>8. Contact</h2>
       <p>
-        Data protection queries: info@globalrsd.co.uk, or Q TECH PRIVATE LTD,
+        Data protection queries: privacy@globalrsd.co.uk, or Q TECH PRIVATE LTD,
         23 Kinnaird Avenue, Bromley BR1 4HG, England. You may also contact the
         Information Commissioner&apos;s Office at ico.org.uk or 0303 123 1113.
       </p>

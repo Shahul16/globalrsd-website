@@ -328,7 +328,7 @@ export default function InternshipPage() {
               Complete the form and attach your CV. Applications are reviewed on a
               rolling basis; shortlisted candidates are invited to a short call.
               For questions, email{" "}
-              <a href={`mailto:${SITE.email}`} className="font-semibold text-navy underline">{SITE.email}</a>.
+              <a href={`mailto:${SITE.hrEmail}`} className="font-semibold text-navy underline">{SITE.hrEmail}</a>.
             </p>
           </Reveal>
           <div className="card mt-8 p-8">

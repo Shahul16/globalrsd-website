@@ -134,7 +134,7 @@ export default function CareersPage() {
                 Complete the form and attach your CV — your application goes
                 straight to our hiring team, and we reply to every applicant.
                 For questions, email{" "}
-                <a href={`mailto:${SITE.email}`} className="font-semibold text-navy underline">{SITE.email}</a>.
+                <a href={`mailto:${SITE.hrEmail}`} className="font-semibold text-navy underline">{SITE.hrEmail}</a>.
               </p>
               <p className="mt-4 rounded-lg border border-slate-200 bg-cream p-4 text-xs leading-relaxed text-slate-500">
                 {SITE.shortName} is an equal-opportunity employer. We assess

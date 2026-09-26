@@ -147,17 +147,21 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "The form is empty." }, { status: 400 });
   }
 
-    const to = formName === "Award nomination"
-      ? SITE.awardsEmail
-      : formName === "Committee membership application"
-        ? SITE.membershipEmail
-        : process.env.LEAD_TO_EMAIL || SITE.email;
-  const from = process.env.LEAD_FROM_EMAIL || "GIRSD Website <onboarding@resend.dev>";
-  const contactEmail = formName === "Award nomination"
-    ? SITE.awardsEmail
-    : formName === "Committee membership application"
-      ? SITE.membershipEmail
-      : SITE.email;
+  const selectedSubject = String(form.get("subject") ?? "");
+
+  let to = process.env.LEAD_TO_EMAIL || SITE.email;
+  if (formName === "Award nomination" || selectedSubject === "Awards & nominations") {
+    to = SITE.awardsEmail;
+  } else if (formName === "Committee membership application" || selectedSubject === "Membership") {
+    to = SITE.membershipEmail;
+  } else if (formName === "Job application" || formName === "Internship application") {
+    to = SITE.hrEmail;
+  } else if (selectedSubject === "Conference / event enquiry") {
+    to = SITE.researchEmail;
+  }
+
+  const from = process.env.LEAD_FROM_EMAIL || `Globalrsd <${SITE.leadsEmail}>`;
+  const contactEmail = to;
   const subject = `[${formName}] ${visitorName || visitorEmail || "New submission"}`;
 
   const rows = fields

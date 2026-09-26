@@ -1,9 +1,10 @@
 import siteJson from "@/content/site.json";
 
-const formatAddress = (addr: any) => {
+export const formatAddress = (addr: any) => {
   if (typeof addr === "string") return addr;
   if (addr && typeof addr === "object") {
-    return [addr.line1, addr.city, addr.postcode, addr.country].filter(Boolean).join(", ");
+    const locality = [addr.city, addr.postcode].filter(Boolean).join(" ");
+    return [addr.line1, locality, addr.country].filter(Boolean).join(", ");
   }
   return "23 Kinnaird Avenue, Bromley BR1 4HG, England";
 };
@@ -21,6 +22,11 @@ export const SITE = {
   researchEmail: (siteJson as any).researchEmail || (siteJson as any).emails?.research || "research@globalrsd.co.uk",
   awardsEmail: (siteJson as any).awardsEmail || (siteJson as any).emails?.awards || "awards@globalrsd.co.uk",
   membershipEmail: (siteJson as any).membershipEmail || (siteJson as any).emails?.membership || "membership@globalrsd.co.uk",
+  hrEmail: (siteJson as any).hrEmail || (siteJson as any).emails?.hr || "hr@globalrsd.co.uk",
+  financeEmail: (siteJson as any).financeEmail || (siteJson as any).emails?.finance || "finance@globalrsd.co.uk",
+  privacyEmail: (siteJson as any).privacyEmail || (siteJson as any).emails?.privacy || "privacy@globalrsd.co.uk",
+  leadsEmail: (siteJson as any).leadsEmail || (siteJson as any).emails?.leads || "leads@globalrsd.co.uk",
+  noreplyEmail: (siteJson as any).noreplyEmail || (siteJson as any).emails?.noreply || "noreply@globalrsd.co.uk",
   phone: (siteJson as any).phone || (siteJson as any).phones?.main || "+44 7586 261118",
   whatsapp: (siteJson as any).whatsapp || (siteJson as any).phones?.whatsapp || "https://wa.me/447586261118",
   accreditation: "Approved CPD (Continuing Professional Development) provider",

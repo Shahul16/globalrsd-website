@@ -17,7 +17,7 @@ export default function PrivacyPage() {
         globalrsd.co.uk, attend our events, take our courses, or hold a
         membership. We are the data controller for this processing, registered
         in England and Wales (Company No. 15754767), 23 Kinnaird Avenue,
-        Bromley BR1 4HG. We process personal data in accordance with the UK
+        Bromley BR1 4HG, England. We process personal data in accordance with the UK
         General Data Protection Regulation (UK GDPR) and the Data Protection
         Act 2018.
       </p>
@@ -71,7 +71,7 @@ export default function PrivacyPage() {
         rectification, to erasure, to restriction of processing, to data
         portability, to object to processing based on legitimate interests or
         for direct marketing, and rights relating to automated
-        decision-making. To exercise any right, email info@globalrsd.co.uk. We
+        decision-making. To exercise any right, email privacy@globalrsd.co.uk. We
         respond within one month. You also have the right to complain to the
         Information Commissioner&apos;s Office (ico.org.uk).
       </p>
@@ -95,7 +95,7 @@ export default function PrivacyPage() {
       <h2>10. Changes and contact</h2>
       <p>
         We may update this policy from time to time; material changes will be
-        highlighted on the Site. Questions and requests: info@globalrsd.co.uk
+        highlighted on the Site. Questions and requests: privacy@globalrsd.co.uk
         or by post to our registered office.
       </p>
     </LegalPage>
